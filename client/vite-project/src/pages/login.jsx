@@ -47,7 +47,7 @@ export default function Login() {
                 <motion.form
                     variants={item}
                     onSubmit={handleSubmit}
-                    className="bg-white border border-black/[0.06] rounded-2xl p-6 space-y-4"
+                    className="bg-white border border-black/6 rounded-2xl p-6 space-y-4"
                 >
                     <AnimatePresence>
                         {error && (

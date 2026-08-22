@@ -63,11 +63,11 @@ export default function Hero() {
 
     return (
         <section className="relative overflow-hidden">
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[length:56px_56px] pointer-events-none" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-`length:56px_56px` pointer-events-none" />
 
             <div
                 ref={glowRef}
-                className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[560px] bg-[radial-gradient(ellipse_at_center,rgba(239,68,68,0.08)_0%,transparent_70%)] pointer-events-none"
+                className="absolute top-0 left-1/2 -translate-x-1/2 `w-[900px]` `h-[560px]` bg-[radial-gradient(ellipse_at_center,rgba(239,68,68,0.08)_0%,transparent_70%)] pointer-events-none"
                 style={{ opacity: 0.6 }}
             />
 

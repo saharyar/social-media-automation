@@ -48,6 +48,7 @@ const register = async (req, res) => {
             `,
         });
     } catch (err) {
+        console.error("EMAIL SEND FAILED (register):", err);
         // User is already created in DB — don't fail the whole request,
         // but let the client know the email didn't go out so they can use Resend OTP
         return res.status(201).json({
@@ -118,17 +119,22 @@ const resendOTP = async (req, res) => {
     user.otpExpires = Date.now() + 10 * 60 * 1000;
     await user.save();
 
-    await sendEmail({
-        to: email,
-        subject: "Your new verification code — Scheduler",
-        html: `
-            <div style="font-family: sans-serif; max-width: 480px; margin: auto;">
-                <h2 style="color:#111">New verification code</h2>
-                <div style="font-size: 32px; font-weight: bold; letter-spacing: 6px; color:#ef4444;">${otp}</div>
-                <p style="color:#666; font-size:14px;">This code expires in 10 minutes.</p>
-            </div>
-        `,
-    });
+    try {
+        await sendEmail({
+            to: email,
+            subject: "Your new verification code — Scheduler",
+            html: `
+                <div style="font-family: sans-serif; max-width: 480px; margin: auto;">
+                    <h2 style="color:#111">New verification code</h2>
+                    <div style="font-size: 32px; font-weight: bold; letter-spacing: 6px; color:#ef4444;">${otp}</div>
+                    <p style="color:#666; font-size:14px;">This code expires in 10 minutes.</p>
+                </div>
+            `,
+        });
+    } catch (err) {
+        console.error("EMAIL SEND FAILED (resendOTP):", err);
+        return res.status(500).json({ message: "Failed to send email. Please try again shortly." });
+    }
 
     res.json({ message: "OTP resent successfully" });
 };
@@ -184,17 +190,22 @@ const forgotPassword = async (req, res) => {
 
     const resetUrl = `${process.env.CLIENT_URL}/reset-password/${resetToken}`;
 
-    await sendEmail({
-        to: email,
-        subject: "Reset your password — Scheduler",
-        html: `
-            <div style="font-family: sans-serif; max-width: 480px; margin: auto;">
-                <h2 style="color:#111">Reset your password</h2>
-                <p>Click the button below to reset your password. This link expires in 15 minutes.</p>
-                <a href="${resetUrl}" style="display:inline-block;background:#ef4444;color:#fff;padding:12px 24px;border-radius:999px;text-decoration:none;font-weight:600;">Reset Password</a>
-            </div>
-        `,
-    });
+    try {
+        await sendEmail({
+            to: email,
+            subject: "Reset your password — Scheduler",
+            html: `
+                <div style="font-family: sans-serif; max-width: 480px; margin: auto;">
+                    <h2 style="color:#111">Reset your password</h2>
+                    <p>Click the button below to reset your password. This link expires in 15 minutes.</p>
+                    <a href="${resetUrl}" style="display:inline-block;background:#ef4444;color:#fff;padding:12px 24px;border-radius:999px;text-decoration:none;font-weight:600;">Reset Password</a>
+                </div>
+            `,
+        });
+    } catch (err) {
+        console.error("EMAIL SEND FAILED (forgotPassword):", err);
+        return res.status(500).json({ message: "Failed to send email. Please try again shortly." });
+    }
 
     res.json({ message: "Reset link sent to email" });
 };

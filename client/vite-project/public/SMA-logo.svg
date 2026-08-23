@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" fill="none">
+  <defs>
+    <linearGradient id="brand" x1="150" y1="150" x2="1050" y2="350" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#06B6F9"/>
+      <stop offset="0.5" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#06B6F9"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Transparent background -->
+
+  <!-- Automation orbit -->
+  <path d="M190 135 C335 45 865 45 1010 135" stroke="url(#brand)" stroke-width="12" stroke-linecap="round" stroke-dasharray="2 30"/>
+  <circle cx="255" cy="104" r="25" fill="url(#brand)"/>
+  <circle cx="600" cy="60" r="25" fill="url(#brand)"/>
+  <circle cx="945" cy="104" r="25" fill="url(#brand)"/>
+
+  <!-- Small social-style marks -->
+  <path d="M246 104c12-2 17-8 19-15-5 3-9 4-14 4 6-4 9-8 11-14-5 3-10 5-16 6-11-11-30-3-30 12 0 2 0 4 1 6-22-1-37-12-48-27-8 14-2 25 8 30-4 0-8-1-11-3 0 13 9 22 21 24-3 1-7 1-11 0 4 11 14 17 26 17-10 8-22 11-35 9 12 8 25 12 39 12 47 0 73-39 73-73v-3c5-4 10-9 13-14-5 2-10 3-15 4z" fill="white" transform="translate(-5,-4) scale(.45)"/>
+
+  <!-- SMA wordmark -->
+  <text x="105" y="330" font-family="Arial, Helvetica, sans-serif" font-size="230" font-weight="800" letter-spacing="-14" fill="url(#brand)">SM</text>
+
+  <!-- Stylized A -->
+  <path d="M690 330 L810 105 L930 330 L870 330 L840 270 L780 270 L750 330 Z
+           M800 225 L820 225 L810 200 Z"
+        fill="url(#brand)"/>
+
+  <!-- AI robot face inside A -->
+  <rect x="785" y="244" width="50" height="31" rx="11" fill="#111B68"/>
+  <circle cx="800" cy="259" r="5" fill="#06B6F9"/>
+  <circle cx="820" cy="259" r="5" fill="#06B6F9"/>
+  <path d="M810 244v-12" stroke="#111B68" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="810" cy="228" r="5" fill="#111B68"/>
+
+  <!-- Subtitle -->
+  <path d="M205 380 H330" stroke="#06B6F9" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="195" cy="380" r="7" fill="#06B6F9"/>
+  <path d="M870 380 H995" stroke="#7C3AED" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="1005" cy="380" r="7" fill="#7C3AED"/>
+
+  <text x="600" y="390" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="34" font-weight="600" letter-spacing="8"
+        fill="#26334D">SOCIAL MEDIA AUTOMATION</text>
+
+  <!-- Send / automation mark -->
+  <path d="M520 430 L680 430 L620 470 L590 450 L550 475 Z" fill="url(#accent)"/>
+  <path d="M520 430 L590 450 L680 430 L600 455 Z" fill="#3B82F6"/>
+  <path d="M500 438 H465 M480 453 H430" stroke="#06B6F9" stroke-width="7" stroke-linecap="round"/>
+  <path d="M700 470 C790 465 850 430 900 385" stroke="#7C3AED" stroke-width="7" stroke-linecap="round"/>
+</svg>

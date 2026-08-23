@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import api from "../api/axios";
+import { useAuth } from "../context/AuthContext";
 
 const OTP_LENGTH = 6;
 const RESEND_SECONDS = 60;
@@ -17,6 +18,7 @@ export default function VerifyOtp() {
   const navigate = useNavigate();
   const location = useLocation();
   const email = location.state?.email || "";
+  const { setAuthFromVerification } = useAuth();
 
   useEffect(() => {
     inputsRef.current[0]?.focus();
@@ -90,7 +92,7 @@ export default function VerifyOtp() {
     setLoading(true);
     try {
       const res = await api.post("/auth/verify-otp", { email, otp });
-      localStorage.setItem("token", res.data.token);
+      setAuthFromVerification(res.data.token, res.data.user);
       navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "That code didn't match. Try again.");

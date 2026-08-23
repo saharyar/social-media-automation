@@ -33,13 +33,20 @@ export function AuthProvider({ children }) {
         return res.data.user;
     };
 
+    // Called after successful OTP verification — logs the user in
+    // the same way login()/signup() do, so ProtectedRoute recognizes them immediately.
+    const setAuthFromVerification = (token, user) => {
+        localStorage.setItem("token", token);
+        setUser(user);
+    };
+
     const logout = () => {
         localStorage.removeItem("token");
         setUser(null);
     };
 
     return (
-        <AuthContext.Provider value={{ user, loading, login, signup, logout }}>
+        <AuthContext.Provider value={{ user, loading, login, signup, logout, setAuthFromVerification }}>
             {children}
         </AuthContext.Provider>
     );

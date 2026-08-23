@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import axios from "axios";
+import api from "../api/axios";
 
 const OTP_LENGTH = 6;
 const RESEND_SECONDS = 60;
@@ -89,7 +89,7 @@ export default function VerifyOtp() {
     setNotice("");
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/verify-otp", { email, otp });
+      const res = await api.post("/auth/verify-otp", { email, otp });
       localStorage.setItem("token", res.data.token);
       navigate("/dashboard");
     } catch (err) {
@@ -106,7 +106,7 @@ export default function VerifyOtp() {
     setResending(true);
     setError("");
     try {
-      await axios.post("http://localhost:5000/api/auth/resend-otp", { email });
+      await api.post("/auth/resend-otp", { email });
       setNotice("New code sent");
       setCooldown(RESEND_SECONDS);
       setDigits(Array(OTP_LENGTH).fill(""));
